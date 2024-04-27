@@ -6,7 +6,7 @@ const HomeContainer = () => {
     <main>
       <section>
         <h2 className="text-2xl text-center my-10">
-          Welcome to PDF - QR Generator
+          Welcome to PDF {'->'} QR Generator
         </h2>
       </section>
 

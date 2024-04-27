@@ -42,7 +42,6 @@ const CustomForm = () => {
       setFile(selectedFile);
     }
   };
-  console.log(fileId);
 
   const handleScan = () => {
     if (fileId) {

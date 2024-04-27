@@ -33,7 +33,7 @@ export default function CustomNavbar(props: Props) {
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Typography variant="h6">
-        <a href="/">PDF-QR</a>
+        <a href="/">PDF - QR</a>
       </Typography>
       <Divider />
       <List>
@@ -72,7 +72,7 @@ export default function CustomNavbar(props: Props) {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
           >
-            <a href="/">PDF-QR</a>
+            <a href="/">PDF - QR</a>
           </Typography>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
@@ -88,7 +88,7 @@ export default function CustomNavbar(props: Props) {
       <nav>
         <Drawer
           container={container}
-          variant="temporary"
+          variant="persistent"
           open={mobileOpen}
           onClose={handleDrawerToggle}
           ModalProps={{
