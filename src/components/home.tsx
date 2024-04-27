@@ -1,4 +1,5 @@
 import React from "react";
+import CustomForm from "./form";
 
 const HomeContainer = () => {
   return (
@@ -9,8 +10,8 @@ const HomeContainer = () => {
         </h2>
       </section>
 
-      <section>
-            
+      <section className="px-2">
+            <CustomForm/>
       </section>
 
     </main>
