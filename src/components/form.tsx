@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import axios from "axios";
-import { Box, Button, CircularProgress } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import QRCode from "react-qr-code";
 
 const CustomForm = () => {
@@ -44,6 +44,14 @@ const CustomForm = () => {
   };
   console.log(fileId);
 
+  const handleScan = () => {
+    if (fileId) {
+      window.location.href = `https://pdf-to-qr.vercel.app/download-file/${fileId}`;
+    } else {
+      console.error("No file uploaded");
+    }
+  };
+
   return (
     <section className="bg-white shadow-lg p-10 m-10 max-w-xl mx-auto border rounded-sm">
       {!isLoading ? (
@@ -64,7 +72,8 @@ const CustomForm = () => {
           <QRCode
             size={256}
             style={{ height: "200px", width: "200px" }}
-            value={`https://pdf-to-qr.vercel.app/file/${fileId}`}
+            value={`https://pdf-to-qr.vercel.app/download-file/${fileId}`}
+            onClick={handleScan}
           />
         </section>
       )}
