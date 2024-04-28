@@ -4,6 +4,8 @@ import axios from "axios";
 import { Button, CircularProgress } from "@mui/material";
 import QRCode from "react-qr-code";
 
+const backendURL = 'https://pdf-to-qr-backend.onrender.com'
+
 const CustomForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [file, setFile] = useState<File | undefined>();
@@ -13,11 +15,16 @@ const CustomForm = () => {
     console.log(file);
     setFileId("");
     if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+        alert("File size exceeds 2MB. Please select a smaller file.");
+        return;
+      }
+
       setIsLoading(true);
       const formData = new FormData();
       formData.append("file", file);
       axios
-        .post("https://pdf-to-qr.vercel.app/upload-file", formData)
+        .post(`${backendURL}/file/upload-file`, formData)
         .then((res) => {
           const fileId = res.data.fileId;
           if (fileId) {
@@ -31,7 +38,7 @@ const CustomForm = () => {
           console.error(err);
         });
     } else {
-      console.error("No file selected");
+      alert("No file selected");
     }
   };
 
@@ -45,7 +52,7 @@ const CustomForm = () => {
 
   const handleScan = () => {
     if (fileId) {
-      window.location.href = `https://pdf-to-qr.vercel.app/download-file/${fileId}`;
+      window.location.href = `${backendURL}/file/download-file/${fileId}`;
     } else {
       console.error("No file uploaded");
     }
@@ -71,7 +78,7 @@ const CustomForm = () => {
           <QRCode
             size={256}
             style={{ height: "200px", width: "200px" }}
-            value={`https://pdf-to-qr.vercel.app/download-file/${fileId}`}
+            value={`${backendURL}/file/download-file/${fileId}`}
             onClick={handleScan}
           />
         </section>
