@@ -15,8 +15,8 @@ const CustomForm = () => {
     console.log(file);
     setFileId("");
     if (file) {
-      if (file.size > 2 * 1024 * 1024) {
-        alert("File size exceeds 2MB. Please select a smaller file.");
+      if (file.size > 5 * 1024 * 1024) {
+        alert("File size exceeds 5MB. Please select a smaller file.");
         return;
       }
 
