@@ -4,7 +4,7 @@ import axios from "axios";
 import { Button, CircularProgress } from "@mui/material";
 import QRCode from "react-qr-code";
 
-const backendURL = 'https://pdf-to-qr-backend.onrender.com'
+const backendURL = 'https://pdf-to-qr-backend.onrender.com/'
 
 const CustomForm = () => {
   const [isLoading, setIsLoading] = useState(false);
